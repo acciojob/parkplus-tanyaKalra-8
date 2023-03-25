@@ -38,7 +38,7 @@ public class ReservationServiceImpl implements ReservationService {
             boolean checkSpot = false;
 
             for (Spot spot: spotList){
-                if (!spot.isOccupied()){
+                if (!spot.getOccupied()){
                     checkSpot = true;
                     break;
                 }
@@ -65,21 +65,21 @@ public class ReservationServiceImpl implements ReservationService {
 
             for (Spot spot: spotList){
                 if (requiredSpotType.equals(SpotType.OTHERS) && spot.getSpotType().equals(SpotType.OTHERS)){
-                    if (spot.getPricePerHour()* timeInHours < minPrice && !spot.isOccupied()){
+                    if (spot.getPricePerHour()* timeInHours < minPrice && !spot.getOccupied()){
                         minPrice = spot.getPricePerHour()*timeInHours;
                         checkSpot = true;
                         minPriceSpot = spot;
                     }
                 }
                 else if (requiredSpotType.equals(SpotType.FOUR_WHEELER) && spot.getSpotType().equals(SpotType.FOUR_WHEELER) || spot.getSpotType().equals(SpotType.OTHERS)) {
-                    if (spot.getPricePerHour()* timeInHours < minPrice && !spot.isOccupied()){
+                    if (spot.getPricePerHour()* timeInHours < minPrice && !spot.getOccupied()){
                         minPrice = spot.getPricePerHour()*timeInHours;
                         checkSpot = true;
                         minPriceSpot = spot;
                     }
                 }
                 else if (requiredSpotType.equals(SpotType.TWO_WHEELER) && spot.getSpotType().equals(SpotType.TWO_WHEELER) || spot.getSpotType().equals(SpotType.FOUR_WHEELER) || spot.getSpotType().equals(SpotType.OTHERS)){
-                    if (spot.getPricePerHour()* timeInHours < minPrice && !spot.isOccupied()){
+                    if (spot.getPricePerHour()* timeInHours < minPrice && !spot.getOccupied()){
                         minPrice = spot.getPricePerHour()*timeInHours;
                         checkSpot = true;
                         minPriceSpot = spot;
